@@ -3,7 +3,7 @@
 <head>
 <style>
   body {
-    background-color: #000; /* Initial background color (dark) */
+    background-color: #fff; /* Initial background color */
     transition: background-color 0.3s; /* Smooth transition */
   }
   .click-me {
@@ -16,26 +16,14 @@
   <a href="#" class="click-me">Click me</a>
   <script>
     const link = document.querySelector('.click-me');
-    let mousePressed = false;
-
-    link.addEventListener('mousedown', () => {
-      mousePressed = true;
-    });
-
-    link.addEventListener('mouseup', () => {
-      mousePressed = false;
-    });
-
     document.addEventListener('mousemove', (e) => {
-      if (!mousePressed) {
-        const distance = Math.sqrt(
-          Math.pow(e.clientX - link.getBoundingClientRect().left - link.offsetWidth / 2, 2) +
-          Math.pow(e.clientY - link.getBoundingClientRect().top - link.offsetHeight / 2, 2)
-        );
-        const maxDistance = 100; // Adjust this value as needed
-        const backgroundColor = `rgba(0, 0, 0, ${1 - distance / maxDistance})`;
-        document.body.style.backgroundColor = backgroundColor;
-      }
+      const distance = Math.sqrt(
+        Math.pow(e.clientX - link.getBoundingClientRect().left - link.offsetWidth / 2, 2) +
+        Math.pow(e.clientY - link.getBoundingClientRect().top - link.offsetHeight / 2, 2)
+      );
+      const maxDistance = 100; // Adjust this value as needed
+      const backgroundColor = `rgba(0, 0, 0, ${distance / maxDistance})`;
+      document.body.style.backgroundColor = backgroundColor;
     });
   </script>
 </body>
