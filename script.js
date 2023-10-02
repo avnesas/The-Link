@@ -1,28 +1,47 @@
 // script.js
 function dynamicTabTitle() {
   const titleElement = document.getElementById("dynamic-title");
-  const text = "THE LINK_";
+  const text = "THE LINK";
   let index = 0;
-  let isBlinking = true;
+  let blinkCount = 0;
 
   function updateTitle() {
-    titleElement.textContent = text.substring(0, index);
+    titleElement.textContent = text.substring(0, index) + (blinkCount % 2 === 0 ? "_" : "");
     if (index === text.length) {
-      isBlinking = !isBlinking;
-      if (isBlinking) {
-        titleElement.textContent = text;
+      blinkCount++;
+      if (blinkCount === 8) { // Blink four times and then stop
+        setTimeout(reverseTitle, 500); // Pause before reversing
       } else {
-        titleElement.textContent = text.substring(0, text.length - 1);
+        setTimeout(updateBlink, 500); // Blink every 500ms
       }
-    }
-    if (isBlinking && index === 0) {
-      index = text.length;
     } else {
-      index--;
+      index++;
+      setTimeout(updateTitle, 100); // Typing speed
     }
-    setTimeout(updateTitle, 100); // Adjust speed as needed
   }
 
+  function updateBlink() {
+    titleElement.textContent = text + "_";
+    setTimeout(updateTitle, 500); // Pause before typing
+  }
+
+  function reverseTitle() {
+    index = text.length;
+    setTimeout(updateReverse, 100); // Backspace speed
+  }
+
+  function updateReverse() {
+    titleElement.textContent = text.substring(0, index) + "_";
+    if (index === 0) {
+      index = text.length;
+      setTimeout(updateTitle, 500); // Pause before typing
+    } else {
+      index--;
+      setTimeout(updateReverse, 100); // Backspace speed
+    }
+  }
+
+  // Initial call to start the animation
   updateTitle();
 }
 
