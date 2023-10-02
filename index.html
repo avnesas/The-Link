@@ -3,12 +3,22 @@
 <head>
 <style>
   body {
-    background-color: #000; /* Initial background color (light) */
-    transition: background-color 0.3s; /* Smooth transition */
+    background-color: #fff; /* Initial background color (light) */
+    transition: background-color 0.3s; /* Smooth background color transition */
   }
   .click-me {
     position: relative;
     z-index: 1; /* Ensure the link is above the background */
+    transition: transform 0.2s ease-in-out; /* Smooth transform transition */
+  }
+  .click-me:hover {
+    transform: translateX(-5px); /* Move the link left on hover */
+    animation: shake 0.3s ease infinite; /* Add a shake animation on hover */
+  }
+  @keyframes shake {
+    0% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    100% { transform: translateX(-5px); }
   }
 </style>
 </head>
