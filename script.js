@@ -15,10 +15,12 @@ function dynamicTabTitle() {
         titleElement.textContent = text.substring(0, text.length - 1);
       }
     }
-    index++;
-    if (index <= text.length) {
-      setTimeout(updateTitle, 200); // Adjust typing speed as needed
+    if (isBlinking && index === 0) {
+      index = text.length;
+    } else {
+      index--;
     }
+    setTimeout(updateTitle, 100); // Adjust speed as needed
   }
 
   updateTitle();
