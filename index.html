@@ -3,12 +3,13 @@
 <head>
 <style>
   body {
-    background-color: #fff; /* Initial background color */
+    background-color: #000; /* Initial background color, set to black */
     transition: background-color 0.3s; /* Smooth transition */
   }
   .click-me {
     position: relative;
     z-index: 1; /* Ensure the link is above the background */
+    color: #fff; /* Set the link text color to white */
   }
 </style>
 </head>
@@ -22,7 +23,7 @@
         Math.pow(e.clientY - link.getBoundingClientRect().top - link.offsetHeight / 2, 2)
       );
       const maxDistance = 100; // Adjust this value as needed
-      const backgroundColor = `rgba(0, 0, 0, ${distance / maxDistance})`;
+      const backgroundColor = `rgba(255, 255, 255, ${distance / maxDistance})`;
       document.body.style.backgroundColor = backgroundColor;
     });
   </script>
