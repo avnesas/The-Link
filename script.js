@@ -7,14 +7,14 @@ function dynamicTabTitle() {
 
   function updateTitle() {
     if (isTyping) {
-      titleElement.textContent = text.substring(0, index);
+      titleElement.textContent = text.substring(0, index) + "_";
       if (index === text.length) {
         isTyping = false;
         setTimeout(updateTitle, 4000); // Wait for 4 seconds before reversing
       }
       index++;
     } else {
-      titleElement.textContent = text.substring(0, index);
+      titleElement.textContent = text.substring(0, index) + "_";
       if (index === 0) {
         isTyping = true;
         setTimeout(updateTitle, 0); // Start typing immediately
