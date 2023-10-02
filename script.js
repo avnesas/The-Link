@@ -10,9 +10,9 @@ function dynamicTabTitle() {
     if (index === text.length) {
       blinkCount++;
       if (blinkCount === 8) { // Blink four times and then stop
-        setTimeout(reverseTitle, 500); // Pause before reversing
+        setTimeout(reverseTitle, 4000); // Pause before reversing (4 seconds)
       } else {
-        setTimeout(updateBlink, 500); // Blink every 500ms
+        setTimeout(updateBlink, 4000); // Blink every 4 seconds
       }
     } else {
       index++;
@@ -22,22 +22,22 @@ function dynamicTabTitle() {
 
   function updateBlink() {
     titleElement.textContent = text + "_";
-    setTimeout(updateTitle, 500); // Pause before typing
+    setTimeout(updateTitle, 4000); // Pause before typing (4 seconds)
   }
 
   function reverseTitle() {
     index = text.length;
-    setTimeout(updateReverse, 100); // Backspace speed
+    setTimeout(updateReverse, 4000); // Backspace speed (4 seconds)
   }
 
   function updateReverse() {
     titleElement.textContent = text.substring(0, index) + "_";
     if (index === 0) {
       index = text.length;
-      setTimeout(updateTitle, 500); // Pause before typing
+      setTimeout(updateTitle, 4000); // Pause before typing (4 seconds)
     } else {
       index--;
-      setTimeout(updateReverse, 100); // Backspace speed
+      setTimeout(updateReverse, 100); // Backspace speed (typing speed)
     }
   }
 
